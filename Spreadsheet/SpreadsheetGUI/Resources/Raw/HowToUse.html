@@ -1,0 +1,309 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        :root {
+            --ion-color-primary: rgb(0, 255, 0);
+            --ion-color-secondary: rgb(255, 0, 0);
+        }
+
+        body {
+            font-size: 100%;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+        title {
+            font-size: 1.2em;
+        }
+
+        h2 {
+            font-size: 1.0em;
+        }
+
+        p {
+            width: 400px;
+        }
+
+        ol {
+            width: 400px;
+        }
+
+        li {
+            padding-top: 5px;
+        }
+
+        .category {
+            padding-top: 5px;
+        }
+
+        .FunctionItem {
+            padding-left: 20px;
+            padding-top: 10px;
+        }
+
+        .description {
+            padding-left: 20px;
+            padding-top: 5px;
+        }
+
+        .listExample {
+            padding-left: 20px;
+            padding-top: 5px;
+            font-family: monospace;
+        }
+
+        ion-icon {
+            font-size: 16px;
+        }
+    </style>
+
+    <meta charset="utf-8" />
+    <title>How To Use:</title>
+</head>
+<body>
+    <section class="category">
+        <h2>File:</h2>
+        <div class="FunctionItem">
+            <b>New:</b>
+            <div class="description">
+                <p>
+                    Opens a new (blank) spreadsheet. If there is Unsave changes,
+                    it will ask the User (you) want to save. "Yes" will ask you to name it,
+                    Saving the file will create a new file. Otherwise if it does exist, it updates the file.
+                    "No" will creates new spreadsheet without saving. "Cancel" will not creating a new Spreadsheet.
+                </p>
+            </div>
+        </div>
+
+        <div class="FunctionItem">
+            <b>Open:</b>
+            <div class="description">
+                <p>
+                    Opens a file and copies into a new spreadsheet. To open a file, it should end in ".sprd" for this Program.
+                    If the spreadsheet has unsave changes, it will ask you if you want to save. "Yes" will ask you to name it,
+                    Saving the file will create a new file. Otherwise if it already exist, it updates the pre-existing file. "No" will discard it changes.
+                    Otherwise, opens and copies it content of the file into the spreadsheet.
+                </p>
+            </div>
+        </div>
+
+        <div class="FunctionItem">
+            <b>Save:</b>
+            <div class="description">
+                <p>
+                    Saves the spreadsheet.
+                    If the spreadsheet already exist,
+                    quickly save the contents & update the file.
+                    Otherwise, same feature as Save As.
+                </p>
+            </div>
+        </div>
+
+        <div class="FunctionItem">
+            <b>Save As:</b>
+            <div class="description">
+                <p>
+                    Let the User (you) save the spreadsheet at a specific location.
+                    The spreadsheet will ask you for a path & name, it'll then create a new saved file.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="category">
+        <h2>View :</h2>
+
+        <div class="FunctionItem">
+            <b>Screenshot:</b>
+            <div class="description">
+                <p>
+                    Let the User be able to take a screenshot of the spreadsheet,
+                    Would ask the User to first name the snapshot, it will then create
+                    a .PNG file that will be save in the User Documents folder on any devices
+                </p>
+            </div>
+        </div>
+
+        <div class="FunctionItem">
+            <b>Show:</b>
+            <div class="description">
+                <p>
+                    Allow the User to hide more of the GUI feature in not showing
+                    the Current Cell & Value text boxes. More focus in entering the content
+                    if the User chooses.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="category">
+        <h2>Help:</h2>
+
+        <div class="FunctionItem">
+            <b>About:</b>
+            <div class="description">
+                <p>
+                    This provides information about the explanation
+                    purpose of the Program, updates, Versioning, and Author for the program.
+                </p>
+            </div>
+        </div>
+
+        <div class="FunctionItem">
+            <b>How to Use:</b>
+            <div class="description">
+                <p>
+                    This provides information on it's feature & how to use
+                    the Spreadsheet works.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="category">
+        <h2>GUI Properties:</h2>
+
+        <div class="FunctionItem">
+            <b>Current Cell:</b>
+            <div class="description">
+                <p>
+                    a non-editable text box showing the cell name of
+                    the selected cell.
+                </p>
+            </div>
+        </div>
+        <div class="FunctionItem">
+            <b>Value:</b>
+            <div class="description">
+                <p>
+                    a non-editable text box showing the cell
+                    value of the selected cell.
+                </p>
+            </div>
+        </div>
+        <div class="FunctionItem">
+            <b>Enter Content:</b>
+            <div class="description">
+                <p>
+                    an editable text box showing the contents of the selected cell.
+                    The User can type and edit information about the cell. When the
+                    contents begins with an '=' then the cell is calculated as a formula. The results are
+                    displayed in the value box.
+                </p>
+            </div>
+
+            <div class="description">
+                <b>How to add centent to a cell:</b>
+                <p>
+                    Click on "Enter Content" text box and enter what you want to add.
+                    After that, click on the "Enter Content" button or
+                    press "return" key (MacOS) or "Enter" key (Windows) to add it to the cell.
+                    If the content is a formula, make sure to have a "=" in front.
+                </p>
+            </div>
+        </div>
+
+
+        <div class="FunctionItem">
+            <b>Spreadsheet/ Grid:</b>
+            <div class="description">
+                <p>
+                    A table of cells that tracks the inputs from
+                    the user. Each cell has a name. The Grid
+                    consist of a window displaying a grid of 26 columns and 99 rows.
+                    A1 in the upper left and Z99 in the lower right. The value of each
+                    cell are displayed in the grid.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="category">
+        <h2>Formulas:</h2>
+
+        <div class="FunctionItem">
+            <b>About:</b>
+            <div class="description">
+                <p>
+                    Formulas represents a standard infix notation using standard precedence
+                    rules. The allowed symbols are non-negative numbers written using double-precision
+                    floating-point syntax (without unary preceeding '-' or '+'). Formula begins
+                    with the Equal sign "=" where the program will interpret the formula for calculations.
+                </p>
+            </div>
+        </div>
+        <div class="FunctionItem">
+            <b>Allowed symbols:</b>
+            <div class="description">
+                <p>
+                    The four types of allowed symbols in a formula are:
+                </p>
+
+                <ol>
+                    <li>
+                        Non-negative numbers written using double-precision
+                        floating-point syntax.
+
+                        <div class='listExample'>
+                            0, 1, 10.01, 69.420, 69e10
+                        </div>
+                    </li>
+
+                    <li>
+                        Variables are Cell names, which consists of one letters from A-Z &
+                        followed by one or more digits from 1-99. Cell names are case insensitive.
+                        For example, "A2" and "a2" are treated as the same.
+
+                        <div class='listExample'>
+                            a1, A10, C9, M69, Z99
+                        </div>
+                    </li>
+
+                    <li>
+                        Parentheses are symbols used in pairs to group things
+                        together or specify the order of operations in an equation.
+
+                        <div class='listExample'>
+                            ( , )
+                        </div>
+                    </li>
+
+                    <li>
+                        The four operator symbols <br>
+                        In order: Addition, Subtraction, Multiplication, Division
+
+                        <div class='listExample'>
+                            + , - , * , /
+                        </div>
+                    </li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="FunctionItem">
+            <b>Limitations:</b>
+            <div class="description">
+                <p>
+                    For this Program, a Formula  are not capable of handling negative numbers or
+                    performing implied multiplication
+                </p>
+
+                <div class='listExample'>
+                    <ion-icon name="checkmark-circle" color="primary"></ion-icon> = (1 / 3) * 3
+                    <br>
+                    <ion-icon name="checkmark-circle" color="primary"></ion-icon> =(2 - 3) * 4
+                    <br>
+                    <ion-icon name="close-circle" color="secondary"></ion-icon> =-69 / 3
+                    <br>
+                    <ion-icon name="close-circle" color="secondary"></ion-icon> =69(420 - 9)
+                </div>
+            </div>
+        </div>
+    </section>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>

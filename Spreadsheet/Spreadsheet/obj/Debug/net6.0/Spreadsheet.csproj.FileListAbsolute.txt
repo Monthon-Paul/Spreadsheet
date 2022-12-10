@@ -1,0 +1,17 @@
+/Users/monthonpaul/Projects/ps6-trout_mask_replica/Spreadsheet/Spreadsheet/bin/Debug/net6.0/Spreadsheet.deps.json
+/Users/monthonpaul/Projects/ps6-trout_mask_replica/Spreadsheet/Spreadsheet/bin/Debug/net6.0/Spreadsheet.dll
+/Users/monthonpaul/Projects/ps6-trout_mask_replica/Spreadsheet/Spreadsheet/bin/Debug/net6.0/Spreadsheet.pdb
+/Users/monthonpaul/Projects/ps6-trout_mask_replica/Spreadsheet/Spreadsheet/bin/Debug/net6.0/DependencyGraph.dll
+/Users/monthonpaul/Projects/ps6-trout_mask_replica/Spreadsheet/Spreadsheet/bin/Debug/net6.0/Formula.dll
+/Users/monthonpaul/Projects/ps6-trout_mask_replica/Spreadsheet/Spreadsheet/bin/Debug/net6.0/Formula.pdb
+/Users/monthonpaul/Projects/ps6-trout_mask_replica/Spreadsheet/Spreadsheet/bin/Debug/net6.0/DependencyGraph.pdb
+/Users/monthonpaul/Projects/ps6-trout_mask_replica/Spreadsheet/Spreadsheet/obj/Debug/net6.0/Spreadsheet.csproj.AssemblyReference.cache
+/Users/monthonpaul/Projects/ps6-trout_mask_replica/Spreadsheet/Spreadsheet/obj/Debug/net6.0/Spreadsheet.GeneratedMSBuildEditorConfig.editorconfig
+/Users/monthonpaul/Projects/ps6-trout_mask_replica/Spreadsheet/Spreadsheet/obj/Debug/net6.0/Spreadsheet.AssemblyInfoInputs.cache
+/Users/monthonpaul/Projects/ps6-trout_mask_replica/Spreadsheet/Spreadsheet/obj/Debug/net6.0/Spreadsheet.AssemblyInfo.cs
+/Users/monthonpaul/Projects/ps6-trout_mask_replica/Spreadsheet/Spreadsheet/obj/Debug/net6.0/Spreadsheet.csproj.CoreCompileInputs.cache
+/Users/monthonpaul/Projects/ps6-trout_mask_replica/Spreadsheet/Spreadsheet/obj/Debug/net6.0/Spreadsheet.csproj.CopyComplete
+/Users/monthonpaul/Projects/ps6-trout_mask_replica/Spreadsheet/Spreadsheet/obj/Debug/net6.0/Spreadsheet.dll
+/Users/monthonpaul/Projects/ps6-trout_mask_replica/Spreadsheet/Spreadsheet/obj/Debug/net6.0/refint/Spreadsheet.dll
+/Users/monthonpaul/Projects/ps6-trout_mask_replica/Spreadsheet/Spreadsheet/obj/Debug/net6.0/Spreadsheet.pdb
+/Users/monthonpaul/Projects/ps6-trout_mask_replica/Spreadsheet/Spreadsheet/obj/Debug/net6.0/ref/Spreadsheet.dll

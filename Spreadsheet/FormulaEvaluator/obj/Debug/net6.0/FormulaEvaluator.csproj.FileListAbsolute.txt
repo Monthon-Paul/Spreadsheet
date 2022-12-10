@@ -1,0 +1,12 @@
+/Users/monthonpaul/Projects/ps6-trout_mask_replica/Spreadsheet/FormulaEvaluator/bin/Debug/net6.0/FormulaEvaluator.deps.json
+/Users/monthonpaul/Projects/ps6-trout_mask_replica/Spreadsheet/FormulaEvaluator/bin/Debug/net6.0/FormulaEvaluator.dll
+/Users/monthonpaul/Projects/ps6-trout_mask_replica/Spreadsheet/FormulaEvaluator/bin/Debug/net6.0/FormulaEvaluator.pdb
+/Users/monthonpaul/Projects/ps6-trout_mask_replica/Spreadsheet/FormulaEvaluator/obj/Debug/net6.0/FormulaEvaluator.csproj.AssemblyReference.cache
+/Users/monthonpaul/Projects/ps6-trout_mask_replica/Spreadsheet/FormulaEvaluator/obj/Debug/net6.0/FormulaEvaluator.GeneratedMSBuildEditorConfig.editorconfig
+/Users/monthonpaul/Projects/ps6-trout_mask_replica/Spreadsheet/FormulaEvaluator/obj/Debug/net6.0/FormulaEvaluator.AssemblyInfoInputs.cache
+/Users/monthonpaul/Projects/ps6-trout_mask_replica/Spreadsheet/FormulaEvaluator/obj/Debug/net6.0/FormulaEvaluator.AssemblyInfo.cs
+/Users/monthonpaul/Projects/ps6-trout_mask_replica/Spreadsheet/FormulaEvaluator/obj/Debug/net6.0/FormulaEvaluator.csproj.CoreCompileInputs.cache
+/Users/monthonpaul/Projects/ps6-trout_mask_replica/Spreadsheet/FormulaEvaluator/obj/Debug/net6.0/FormulaEvaluator.dll
+/Users/monthonpaul/Projects/ps6-trout_mask_replica/Spreadsheet/FormulaEvaluator/obj/Debug/net6.0/refint/FormulaEvaluator.dll
+/Users/monthonpaul/Projects/ps6-trout_mask_replica/Spreadsheet/FormulaEvaluator/obj/Debug/net6.0/FormulaEvaluator.pdb
+/Users/monthonpaul/Projects/ps6-trout_mask_replica/Spreadsheet/FormulaEvaluator/obj/Debug/net6.0/ref/FormulaEvaluator.dll

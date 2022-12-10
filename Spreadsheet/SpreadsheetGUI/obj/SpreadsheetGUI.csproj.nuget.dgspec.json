@@ -1,0 +1,295 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/monthonpaul/Projects/Spreadsheet/Spreadsheet/SpreadsheetGUI/SpreadsheetGUI.csproj": {}
+  },
+  "projects": {
+    "/Users/monthonpaul/Projects/Spreadsheet/Spreadsheet/DependencyGraph/DependencyGraph.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/monthonpaul/Projects/Spreadsheet/Spreadsheet/DependencyGraph/DependencyGraph.csproj",
+        "projectName": "DependencyGraph",
+        "projectPath": "/Users/monthonpaul/Projects/Spreadsheet/Spreadsheet/DependencyGraph/DependencyGraph.csproj",
+        "packagesPath": "/Users/monthonpaul/.nuget/packages/",
+        "outputPath": "/Users/monthonpaul/Projects/Spreadsheet/Spreadsheet/DependencyGraph/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/monthonpaul/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "/usr/local/share/dotnet/x64/library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/x64/sdk/6.0.401/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/monthonpaul/Projects/Spreadsheet/Spreadsheet/Formula/Formula.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/monthonpaul/Projects/Spreadsheet/Spreadsheet/Formula/Formula.csproj",
+        "projectName": "Formula",
+        "projectPath": "/Users/monthonpaul/Projects/Spreadsheet/Spreadsheet/Formula/Formula.csproj",
+        "packagesPath": "/Users/monthonpaul/.nuget/packages/",
+        "outputPath": "/Users/monthonpaul/Projects/Spreadsheet/Spreadsheet/Formula/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/monthonpaul/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "/usr/local/share/dotnet/x64/library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/x64/sdk/6.0.401/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/monthonpaul/Projects/Spreadsheet/Spreadsheet/Spreadsheet/Spreadsheet.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/monthonpaul/Projects/Spreadsheet/Spreadsheet/Spreadsheet/Spreadsheet.csproj",
+        "projectName": "Spreadsheet",
+        "projectPath": "/Users/monthonpaul/Projects/Spreadsheet/Spreadsheet/Spreadsheet/Spreadsheet.csproj",
+        "packagesPath": "/Users/monthonpaul/.nuget/packages/",
+        "outputPath": "/Users/monthonpaul/Projects/Spreadsheet/Spreadsheet/Spreadsheet/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/monthonpaul/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "/usr/local/share/dotnet/x64/library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "/Users/monthonpaul/Projects/Spreadsheet/Spreadsheet/DependencyGraph/DependencyGraph.csproj": {
+                "projectPath": "/Users/monthonpaul/Projects/Spreadsheet/Spreadsheet/DependencyGraph/DependencyGraph.csproj"
+              },
+              "/Users/monthonpaul/Projects/Spreadsheet/Spreadsheet/Formula/Formula.csproj": {
+                "projectPath": "/Users/monthonpaul/Projects/Spreadsheet/Spreadsheet/Formula/Formula.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/x64/sdk/6.0.401/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/monthonpaul/Projects/Spreadsheet/Spreadsheet/SpreadsheetGUI/SpreadsheetGUI.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/monthonpaul/Projects/Spreadsheet/Spreadsheet/SpreadsheetGUI/SpreadsheetGUI.csproj",
+        "projectName": "SpreadsheetGUI",
+        "projectPath": "/Users/monthonpaul/Projects/Spreadsheet/Spreadsheet/SpreadsheetGUI/SpreadsheetGUI.csproj",
+        "packagesPath": "/Users/monthonpaul/.nuget/packages/",
+        "outputPath": "/Users/monthonpaul/Projects/Spreadsheet/Spreadsheet/SpreadsheetGUI/obj/",
+        "projectStyle": "PackageReference",
+        "crossTargeting": true,
+        "configFilePaths": [
+          "/Users/monthonpaul/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0-maccatalyst"
+        ],
+        "sources": {
+          "/usr/local/share/dotnet/x64/library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0-maccatalyst15.4": {
+            "targetAlias": "net6.0-maccatalyst",
+            "projectReferences": {
+              "/Users/monthonpaul/Projects/Spreadsheet/Spreadsheet/Spreadsheet/Spreadsheet.csproj": {
+                "projectPath": "/Users/monthonpaul/Projects/Spreadsheet/Spreadsheet/Spreadsheet/Spreadsheet.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0-maccatalyst15.4": {
+          "targetAlias": "net6.0-maccatalyst",
+          "dependencies": {
+            "CommunityToolkit.Maui": {
+              "target": "Package",
+              "version": "[1.3.0, )"
+            },
+            "CommunityToolkit.Maui.Core": {
+              "target": "Package",
+              "version": "[1.3.0, )"
+            },
+            "Microsoft.Maui.Dependencies": {
+              "target": "Package",
+              "version": "[6.0.541, )"
+            },
+            "Microsoft.Maui.Extensions": {
+              "target": "Package",
+              "version": "[6.0.541, )"
+            },
+            "System.Runtime.InteropServices.NFloat.Internal": {
+              "target": "Package",
+              "version": "[6.0.1, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "xamarinios10",
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.MacCatalyst": {
+              "privateAssets": "all"
+            },
+            "Microsoft.Maui.Controls": {
+              "privateAssets": "all"
+            },
+            "Microsoft.Maui.Core": {
+              "privateAssets": "all"
+            },
+            "Microsoft.Maui.Essentials": {
+              "privateAssets": "all"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/x64/sdk/6.0.401/RuntimeIdentifierGraph.json"
+        }
+      },
+      "runtimes": {
+        "maccatalyst-x64": {
+          "#import": []
+        }
+      }
+    }
+  }
+}

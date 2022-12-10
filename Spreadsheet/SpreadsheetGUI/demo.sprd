@@ -1,0 +1,26 @@
+{
+  "cells": {
+    "A1": {
+      "stringForm": "2"
+    },
+    "A2": {
+      "stringForm": "2"
+    },
+    "A3": {
+      "stringForm": "3"
+    },
+    "A4": {
+      "stringForm": "4"
+    },
+    "B1": {
+      "stringForm": "=A1/A2"
+    },
+    "B2": {
+      "stringForm": "=A3/A4"
+    },
+    "C1": {
+      "stringForm": "=B1+B2"
+    }
+  },
+  "Version": "sprd"
+}

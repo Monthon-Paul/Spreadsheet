@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:SS="clr-namespace:SS" 
+             x:Class="SpreadsheetGUI.MainPage">
+    <ContentPage.MenuBarItems>
+        <MenuBarItem Text="File">
+            <MenuFlyoutItem Text="New Sheet" Clicked="NewClicked" />
+            <MenuFlyoutItem Text="Open Sheet" Clicked="OpenClicked" />
+            <MenuFlyoutItem Text="Save" Clicked="SaveClicked" />
+            <MenuFlyoutItem Text="Save As..." Clicked="SaveAsClicked" />
+        </MenuBarItem>
+        <MenuBarItem Text="View">
+            <MenuFlyoutItem Text="📸 Screenshot" Clicked="Screencapture" />
+            <MenuFlyoutSubItem Text="👁 Show">
+                <MenuFlyoutItem x:Name="MenuCell" Text="Current Cell" Clicked="ShowCell" />
+                <MenuFlyoutItem x:Name="MenuValue" Text="Value" Clicked="ShowValue"/>
+            </MenuFlyoutSubItem>
+        </MenuBarItem>
+        <MenuBarItem Text="Help">
+            <MenuFlyoutItem Text="ℹ About"  Clicked="AboutClicked" />
+            <MenuFlyoutItem Text="？How to use" Clicked="HTUClicked" />
+        </MenuBarItem>
+    </ContentPage.MenuBarItems>
+    <Grid x:Name="Spreadsheet" RowDefinitions="60,60,*" ColumnDefinitions="*,*">
+        <StackLayout Spacing="5">
+            <Label x:Name="LabelCell" Text="Current Cell:" IsVisible="True" Margin="7,3,0,0" />
+            <Entry x:Name="entryCell"
+               Placeholder="Current Cell" IsReadOnly="True" IsVisible="True" />
+        </StackLayout>
+        <StackLayout Grid.Column="1" Spacing="5">
+            <Label x:Name="LabelValue" Text="Value:" IsVisible="True" Margin="7,3,0,0"/>
+            <Entry x:Name="entryValue"
+               Placeholder="Value" IsReadOnly="True" IsVisible="True"/>
+        </StackLayout>
+
+        <StackLayout Grid.Row="1" Spacing="5">
+            <Label Text="Enter Content:" Margin="7,3,0,0"/>
+            <Entry x:Name="entryContent"
+               Placeholder="Enter Content" IsEnabled="True" IsVisible="True"
+               Completed="EnterKey"
+               Grid.Row="1" />
+        </StackLayout>
+
+        <Button x:Name="enterContents"
+            Text="Enter Content"
+	        Clicked="OnClicked"
+            Grid.Column="1"
+            Grid.Row="1"
+            HeightRequest="50"
+            BackgroundColor="White"/>
+        <SS:SpreadsheetGrid x:Name="spreadsheetGrid"
+                            Grid.Row="2"
+                            Grid.ColumnSpan="2"/>
+    </Grid>
+
+</ContentPage>
+

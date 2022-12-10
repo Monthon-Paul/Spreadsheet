@@ -1,0 +1,36 @@
+﻿<Properties StartupConfiguration="{EFE36084-BDA1-479E-B246-30375E89FE55}|Default">
+  <Xamarin.Addins.Core.Project ActiveDebugTarget="MyAppleMacCatalystID" />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.SpreadsheetGUI PreferredExecutionTarget="MyAppleMacCatalystID" />
+  <MonoDevelop.Ide.ItemProperties.FormulaEvaluatorTest PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="SpreadsheetGUI/MainPage.xaml.cs">
+    <Files>
+      <File FileName="SpreadsheetGUI/Resources/Raw/About.html" Line="50" Column="21" />
+      <File FileName="SpreadsheetGUI/MainPage.xaml.cs" Line="11" Column="4" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Spreadsheet" expanded="True">
+            <Node name="SpreadsheetGUI" expanded="True">
+              <Node name="Resources" expanded="True">
+                <Node name="Raw" expanded="True" />
+              </Node>
+              <Node name="MainPage.xaml" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/monthonpaul/Projects/Spreadsheet/Spreadsheet/SpreadsheetTests/SpreadheetTests.cs" relfile="SpreadsheetTests/SpreadheetTests.cs" line="127" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+</Properties>

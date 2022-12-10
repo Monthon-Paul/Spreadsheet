@@ -1,0 +1,12 @@
+/Users/monthonpaul/Projects/ps6-trout_mask_replica/Spreadsheet/DependencyGraph/bin/Debug/net6.0/DependencyGraph.deps.json
+/Users/monthonpaul/Projects/ps6-trout_mask_replica/Spreadsheet/DependencyGraph/bin/Debug/net6.0/DependencyGraph.dll
+/Users/monthonpaul/Projects/ps6-trout_mask_replica/Spreadsheet/DependencyGraph/bin/Debug/net6.0/DependencyGraph.pdb
+/Users/monthonpaul/Projects/ps6-trout_mask_replica/Spreadsheet/DependencyGraph/obj/Debug/net6.0/DependencyGraph.csproj.AssemblyReference.cache
+/Users/monthonpaul/Projects/ps6-trout_mask_replica/Spreadsheet/DependencyGraph/obj/Debug/net6.0/DependencyGraph.GeneratedMSBuildEditorConfig.editorconfig
+/Users/monthonpaul/Projects/ps6-trout_mask_replica/Spreadsheet/DependencyGraph/obj/Debug/net6.0/DependencyGraph.AssemblyInfoInputs.cache
+/Users/monthonpaul/Projects/ps6-trout_mask_replica/Spreadsheet/DependencyGraph/obj/Debug/net6.0/DependencyGraph.AssemblyInfo.cs
+/Users/monthonpaul/Projects/ps6-trout_mask_replica/Spreadsheet/DependencyGraph/obj/Debug/net6.0/DependencyGraph.csproj.CoreCompileInputs.cache
+/Users/monthonpaul/Projects/ps6-trout_mask_replica/Spreadsheet/DependencyGraph/obj/Debug/net6.0/DependencyGraph.dll
+/Users/monthonpaul/Projects/ps6-trout_mask_replica/Spreadsheet/DependencyGraph/obj/Debug/net6.0/refint/DependencyGraph.dll
+/Users/monthonpaul/Projects/ps6-trout_mask_replica/Spreadsheet/DependencyGraph/obj/Debug/net6.0/DependencyGraph.pdb
+/Users/monthonpaul/Projects/ps6-trout_mask_replica/Spreadsheet/DependencyGraph/obj/Debug/net6.0/ref/DependencyGraph.dll
