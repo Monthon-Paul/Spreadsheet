@@ -1,7 +1,7 @@
 # Spreadsheet
 Authors: Monthon Paul
 
-Current Version: 1.3
+Current Version: 1.1
 
 Last Updated: 11/05/2022
 
@@ -24,14 +24,13 @@ The reason why we need this is for the [Popups](https://learn.microsoft.com/en-u
  
 # How the spreadsheet works:
 To add/change the contents of a cell, first, click on "Enter Content" text box and enter what you would like to add.  Then, you would need to press "enter" or 
-click on the "Enter Content" button to add to the cell.  You should be able to add any number or text, but formulas should start with a "+" and there are
-limitations.  Formulas should contain at least one of the following: Non-negative numbers, Variables, Parentheses(To group), and the four standard operators.  
+click on the "Enter Content" button to add to the cell.  You should be able to add any number or text, but formulas should start with a "=" and have some limitations.  Formulas should contain at least one of the following: Non-negative numbers, Variables, Parentheses(To group), and the four standard operators.  
 For more details on the limits, take a look in the help tab.
 
 In the file tab, there is "New", "Open", "Save", and "Save As".  New creates a new spreadsheet, Open opens a existing spreadsheet file, Save saves the the file,
 and Save As lets you save to a specific location.
 
-In View: Screenshot and Show.  Screenshot saves what the spreadsheet looks like, not the contents.  Show shows/hides elements in the GUI
+In View: Screenshot and Show.  Screenshot saves a snap of the spreadsheet as a .PNG file. It will save in any User Documents folder. Show shows/hides elements in the GUI.
 
 For more detailed explanations, take a look into the help tab in the spreadsheet.
 
