@@ -41,7 +41,7 @@ For more detailed explanations, take a look into the help tab in the spreadsheet
 
 # How to Setup:
 
-### [Download](https://drive.google.com/file/d/1OCZpU48XXt1VJv7cPYzksrdUiWPyRuZ4/view?usp=share_link) the application
+### [Download the application](https://drive.google.com/file/d/1OCZpU48XXt1VJv7cPYzksrdUiWPyRuZ4/view?usp=share_link) 
 
 The Project was implemented in the .NET 7.0 Framwork & uses .NET MAUI for GUI, then require a compatible .NET SDK
 This Program can be run in the Visual Studio IDE, or can be build/run by the Command line
