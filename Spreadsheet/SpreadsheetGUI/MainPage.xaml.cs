@@ -18,7 +18,7 @@ namespace SpreadsheetGUI;
 /// and opening a Spreadsheet file. With Extra Features
 ///
 /// Author: Monthon Paul
-/// Version: November 5, 2022
+/// Version: March 25, 2023
 /// </summary>
 public partial class MainPage : ContentPage {
 
@@ -437,7 +437,7 @@ public partial class MainPage : ContentPage {
 
 		// Display a Popup displaying "about" the Program
 		Popup about = new Popup() {
-			CanBeDismissedByTappingOutsideOfPopup = false,
+			CanBeDismissedByTappingOutsideOfPopup = true,
 			Size = new Size(500, 500),
 			Content = new StackLayout {
 				BackgroundColor = new Color(255, 255, 255),
@@ -483,7 +483,7 @@ public partial class MainPage : ContentPage {
 
 		// Display a Popup displaying "How to Use" the Program
 		Popup HTU = new Popup() {
-			CanBeDismissedByTappingOutsideOfPopup = false,
+			CanBeDismissedByTappingOutsideOfPopup = true,
 			Size = new Size(520, 700),
 			Content = new StackLayout {
 				BackgroundColor = new Color(255, 255, 255), // White
