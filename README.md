@@ -20,8 +20,6 @@ You would need this package for the spreadsheet functions to work:
  
  * [ToolKit](https://learn.microsoft.com/en-us/dotnet/communitytoolkit/maui/)
  
-The it's needed is for the [Popups](https://learn.microsoft.com/en-us/dotnet/communitytoolkit/maui/views/popup) for the help menu
- 
 # How the spreadsheet works:
 To add/change the contents of a cell, first, click on "Enter Content" text box and enter what you would like to add.  Then, you would need to press "enter" or 
 click on the "Enter Content" button to add to the cell.  You should be able to add any number or text, but formulas should start with a "=" and have some limitations.  Formulas should contain at least one of the following: Non-negative numbers, Variables, Parentheses(To group), and the four standard operators.  
@@ -41,7 +39,7 @@ For more detailed explanations, take a look into the help tab in the spreadsheet
 
 # How to Setup:
 
-### [Download](https://drive.google.com/file/d/1OCZpU48XXt1VJv7cPYzksrdUiWPyRuZ4/view?usp=share_link) the application (MacOS only)
+### [Download](https://drive.google.com/file/d/1ZcoakFB-0Uroz4zp2V2BGWmGUBGWk0YI/view?usp=share_link) the application (MacOS only)
 
 The Project was implemented in the .NET 7.0 Framwork & uses .NET MAUI for GUI, then require a compatible .NET SDK
 This Program can be run in the Visual Studio IDE, or can be build/run by the Command line
@@ -73,4 +71,3 @@ For Windows
 cd SpreadsheetGUI
 dotnet build -t:Run -f net7.0-windows
 ```
-
