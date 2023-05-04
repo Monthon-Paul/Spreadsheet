@@ -39,7 +39,7 @@ For more detailed explanations, take a look into the help tab in the spreadsheet
 
 # How to Setup:
 
-### [Download](https://drive.google.com/file/d/1ZcoakFB-0Uroz4zp2V2BGWmGUBGWk0YI/view?usp=share_link) the application (MacOS only)
+### [Download](https://drive.google.com/file/d/12Ku1jdMAA_dfihm_ukO74xB-jYiatIgD/view?usp=share_link) the application (MacOS only)
 
 The Project was implemented in the .NET 7.0 Framwork & uses .NET MAUI for GUI, then require a compatible .NET SDK
 This Program can be run in the Visual Studio IDE, or can be build/run by the Command line
