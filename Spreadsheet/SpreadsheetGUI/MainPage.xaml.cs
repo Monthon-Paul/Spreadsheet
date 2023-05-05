@@ -196,6 +196,7 @@ public partial class MainPage : ContentPage {
 		}
 		//Clears and creates a new spreadsheet
 		Clear:
+		fullpath = "";
 		entryValue.Text = "";
 		entryContent.Text = "";
 		spreadsheetGrid.Clear();
