@@ -1,9 +1,9 @@
 # Spreadsheet
 Authors: Monthon Paul
 
-Current Version: 1.1
+Current Version: 1.2
 
-Last Updated: 3/25/2023
+Last Updated: 5/4/2023
 
 # Purpose: 
 
