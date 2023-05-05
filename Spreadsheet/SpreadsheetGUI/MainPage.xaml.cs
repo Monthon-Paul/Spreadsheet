@@ -18,7 +18,7 @@ namespace SpreadsheetGUI;
 /// and opening a Spreadsheet file. With Extra Features
 ///
 /// Author: Monthon Paul
-/// Version: March 25, 2023
+/// Version: May 4, 2023
 /// </summary>
 public partial class MainPage : ContentPage {
 
