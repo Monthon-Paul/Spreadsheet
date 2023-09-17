@@ -1,7 +1,4 @@
-﻿using System;
-using System.Text.RegularExpressions;
-using System.Collections;
-using System.Linq.Expressions;
+﻿using System.Text.RegularExpressions;
 
 namespace FormulaEvaluator;
 /// <summary>
@@ -10,12 +7,12 @@ namespace FormulaEvaluator;
 /// Works with variables too also perform Calculations.
 ///
 /// Author: Monthon Paul
-/// Version: Semptember 5, 2022
+/// Version: Semptember 17, 2023
 /// </summary>
-public class Evaluator {
+public partial class Evaluator {
 
 	// Creating the delegate
-	public delegate int Lookup(String v);
+	public delegate int Lookup(string v);
 
 	/// <summary>
 	/// <c>Evaluate</c> A method that evaluates arithmetic expressions using standard infix notation.
@@ -25,22 +22,22 @@ public class Evaluator {
 	/// <param name="exp">String of arithmetic expressions</param>
 	/// <returns>Calculation of the arithmetic expressions</returns>
 	/// <exception cref="ArgumentException"></exception>
-	public static int Evaluate(String? exp, Lookup variableEvaluator) {
+	public static int Evaluate(string? exp, Lookup variableEvaluator) {
 		// First check for null exeception
 		if (exp == null || exp == "") {
 			throw new ArgumentException("Expression is null");
 		}
-		int number, firstnum = 0;
+
+		int number;
 		// initiate the stacks to construct
-		Stack<int> value = new Stack<int>();
-		Stack<String> operators = new Stack<string>();
+		Stack<int> value = new();
+		Stack<string> operators = new();
 
 		// Seperate and trim any unnesscary leading and trailing whitespace
-		String[] substrings = Regex.Split(exp, "(\\()|(\\))|(-)|(\\+)|(\\*)|(/)");
-
+		string[] substrings = MyRegex().Split(exp);
 
 		// An Algorithm to loop for each String to add on the stacks to perform Calculations
-		foreach (String s in substrings) {
+		foreach (string s in substrings) {
 			// Ignore the extra String & Whitespace
 			if (s == "" || s == " ") {
 				continue;
@@ -112,7 +109,7 @@ public class Evaluator {
 		}
 		// return a finilize solution when 2 values and 1 operator
 		// Perform  a calculation to return a solution.
-		firstnum = value.Pop();
+		int firstnum = value.Pop();
 		return Calculation(firstnum, value.Pop(), operators.Pop());
 	}
 
@@ -159,16 +156,15 @@ public class Evaluator {
 	/// <param name="value"> integer stack</param>
 	/// <param name="number">specif token which is an int value</param>
 	/// <exception cref="ArgumentException"> throw an error when getting a specific value for stacks</exception>
-	private static void IntegerAlgo(Stack<String> operators, Stack<int> value, int number) {
-		// Check if operator has any number
-		int calc = 0;
+	private static void IntegerAlgo(Stack<string> operators, Stack<int> value, int number) {
 		if (operators.Count != 0) {
 			// In a special case for Negative numbers, it will be in a stack
 			// but check if there is a int value in the value stack 
 			if (Regex.IsMatch(operators.Peek(), @"[/*+-]") && value.Count == 0) {
 				throw new ArgumentException("Unary Negative or exta operator with no value");
 			} else if (operators.Peek() == "/" || operators.Peek() == "*") {
-				calc = Calculation(number, value.Pop(), operators.Pop());
+				// Check if operator has any number
+				int calc = Calculation(number, value.Pop(), operators.Pop());
 				value.Push(calc);
 				return;
 			}
@@ -186,20 +182,23 @@ public class Evaluator {
 	/// <exception cref="ArgumentException">
 	/// Throw an error where operators doesn't have a peek or no 2 values from stack
 	/// </exception>
-	private static void OperatorAlgo(Stack<String> operators, Stack<int> value, String ope, String secop) {
-		int firstnum, calc = 0;
+	private static void OperatorAlgo(Stack<string> operators, Stack<int> value, string ope, string secop) {
+		int firstnum;
 		try {
 			if (operators.Count != 0) {
 				// compare the top of Operators stack with specific opperators.
 				if (operators.Peek() == ope || operators.Peek() == secop) {
 					firstnum = value.Pop();
-					calc = Calculation(firstnum, value.Pop(), operators.Pop());
+					int calc = Calculation(firstnum, value.Pop(), operators.Pop());
 					value.Push(calc);
 				}
 			}
-		} catch (Exception e) {
-			e = new ArgumentException("either too many operators or no value for the expression");
+		} catch (Exception) {
+			Exception e = new ArgumentException("either too many operators or no value for the expression");
 			throw e;
 		}
 	}
+
+	[GeneratedRegex("(\\()|(\\))|(-)|(\\+)|(\\*)|(/)")]
+	private static partial Regex MyRegex();
 }

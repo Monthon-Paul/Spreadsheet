@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace SpreadsheetUtilities;
+﻿namespace SpreadsheetUtilities;
 /// <summary>
 /// (s1,t1) is an ordered pair of strings
 /// t1 depends on s1; s1 must be evaluated before t1
@@ -33,7 +28,7 @@ namespace SpreadsheetUtilities;
 /// </summary>
 ///
 /// Author: Monthon Paul
-/// Version: September 10, 2022
+/// Version: September 17, 2023
 public class DependencyGraph {
 
 	// Initialize private variables
@@ -56,7 +51,7 @@ public class DependencyGraph {
 	/// </summary>
 	/// <returns> number of pairs</returns>
 	public int Size {
-		get { return this.countPairs; }
+		get { return countPairs; }
 	}
 
 	/// <summary>

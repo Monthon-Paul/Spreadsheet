@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using SpreadsheetUtilities;
+﻿using SpreadsheetUtilities;
 using System.Text.RegularExpressions;
-using System.Xml.Linq;
 using Newtonsoft.Json;
 
 namespace SS;
@@ -22,15 +18,15 @@ namespace SS;
 /// or Microsoft Excel.
 ///
 /// Author: Monthon Paul
-/// Version: September 30 2022
+/// Version: September 17 2023
 /// </summary>
 [JsonObject(MemberSerialization.OptIn)]
-public class Spreadsheet : AbstractSpreadsheet {
+public partial class Spreadsheet : AbstractSpreadsheet {
 
 	// Initialize variables
 	[JsonProperty(PropertyName = "cells")]
-	private Dictionary<string, Cell> spreadsheet;
-	private DependencyGraph graph;
+	private readonly Dictionary<string, Cell> spreadsheet;
+	private readonly DependencyGraph graph;
 	private bool change;
 
 	//  4 args Contructor for Spreadsheet
@@ -42,11 +38,7 @@ public class Spreadsheet : AbstractSpreadsheet {
 		try {
 			//Read the file that makes a json to an acutal spreadsheet
 			string json = File.ReadAllText(pathToFile);
-			Spreadsheet? sheet = JsonConvert.DeserializeObject<Spreadsheet>(json);
-			// Check if the spreadsheet is null when created
-			if (sheet is null) {
-				throw new SpreadsheetReadWriteException("Trouble opening, reading, & writing file");
-			}
+			Spreadsheet? sheet = JsonConvert.DeserializeObject<Spreadsheet>(json) ?? throw new SpreadsheetReadWriteException("Trouble opening, reading, & writing file");
 			// Check if the version match
 			if (!sheet.Version.Equals(version)) {
 				throw new SpreadsheetReadWriteException("Wrong version, this version does not match the fileName version.");
@@ -97,7 +89,7 @@ public class Spreadsheet : AbstractSpreadsheet {
 	public override void Save(string filename) {
 		// try to save the spreadsheet as a file
 		try {
-			string json = JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+			string json = JsonConvert.SerializeObject(this, Formatting.Indented);
 
 			File.WriteAllText(filename, json);
 		} catch (Exception) {
@@ -106,7 +98,7 @@ public class Spreadsheet : AbstractSpreadsheet {
 		Changed = false;
 	}
 
-	public override bool Changed { get => this.change; protected set => this.change = value; }
+	public override bool Changed { get => change; protected set => change = value; }
 
 	/// <summary>
 	/// Enumerates the names of all the non-empty cells in the spreadsheet.
@@ -206,7 +198,7 @@ public class Spreadsheet : AbstractSpreadsheet {
 		if (double.TryParse(content, out double d)) {
 			recalc = SetCellContents(normalize, d);
 		} else if (content.StartsWith("=")) {
-			Formula f = new Formula(content.Substring(1), Normalize, IsValid);
+			Formula f = new(content[1..], Normalize, IsValid);
 			recalc = SetCellContents(normalize, f);
 		} else {
 			recalc = SetCellContents(normalize, content);
@@ -224,8 +216,7 @@ public class Spreadsheet : AbstractSpreadsheet {
 			if (spreadsheet[cellname].Content is string || spreadsheet[cellname].Content is double) {
 				spreadsheet[cellname].Value = GetCellContents(normalize);
 				// Evaulate to get a double or FormulaError for Formula
-			} else if (spreadsheet[cellname].Content is Formula) {
-				Formula f = (Formula) spreadsheet[cellname].Content;
+			} else if (spreadsheet[cellname].Content is Formula f) {
 				spreadsheet[cellname].Value = f.Evaluate(Lookup);
 			}
 		}
@@ -375,7 +366,7 @@ public class Spreadsheet : AbstractSpreadsheet {
 	/// <returns>True if it's the correct format, otherwise false</returns>
 	private bool isCellname(string name) {
 		string normalize = Normalize(name);
-		return Regex.IsMatch(normalize, @"^[a-zA-Z]+\d+$") && IsValid(normalize);
+		return MyRegex().IsMatch(normalize) && IsValid(normalize);
 	}
 
 	/// <summary>
@@ -414,7 +405,7 @@ public class Spreadsheet : AbstractSpreadsheet {
 		/// <param name="content"> the content must be either be a string, double, or Formula </param>
 		public Cell(object content) {
 			this.content = content;
-			this.value = content;
+			value = content;
 		}
 
 		/// <summary>
@@ -437,13 +428,11 @@ public class Spreadsheet : AbstractSpreadsheet {
 		/// Json stringForm content
 		/// </summary>
 		[JsonProperty(PropertyName = "stringForm")]
-		private string stringForm {
+		private string StringForm {
 			get {
-				if (content is double) {
-					double d = (double) content;
+				if (content is double d) {
 					return d.ToString();
-				} else if (content is Formula) {
-					Formula f = (Formula) content;
+				} else if (content is Formula f) {
 					return "=" + f.ToString();
 				}
 				return (string) content;
@@ -454,4 +443,7 @@ public class Spreadsheet : AbstractSpreadsheet {
 			}
 		}
 	}
+
+	[GeneratedRegex("^[a-zA-Z]+\\d+$")]
+	private static partial Regex MyRegex();
 }

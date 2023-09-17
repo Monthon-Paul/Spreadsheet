@@ -1,6 +1,4 @@
-﻿using System.Xml.Linq;
-using SpreadsheetUtilities;
-using CommunityToolkit.Maui;
+﻿using SpreadsheetUtilities;
 using CommunityToolkit.Maui.Views;
 using SS;
 
@@ -18,7 +16,7 @@ namespace SpreadsheetGUI;
 /// and opening a Spreadsheet file. With Extra Features
 ///
 /// Author: Monthon Paul
-/// Version: May 4, 2023
+/// Version: September 17, 2023
 /// </summary>
 public partial class MainPage : ContentPage {
 
@@ -32,7 +30,7 @@ public partial class MainPage : ContentPage {
 	public MainPage() {
 		InitializeComponent();
 		// Running the application creates a Spreadsheet
-		this.sheet = new Spreadsheet(Valid, UpperCase, "sprd");
+		sheet = new Spreadsheet(Valid, UpperCase, "sprd");
 		// First cell to star tthe Program should be A1, therefore (0,0)
 		spreadsheetGrid.SetSelection(0, 0);
 		entryCell.Text = "A1";
@@ -78,7 +76,7 @@ public partial class MainPage : ContentPage {
 	/// </summary>
 	/// <param name="sender">Pointer to the Button</param>
 	/// <param name="e">triggle an event</param>
-	private void OnClicked(Object sender, EventArgs e) {
+	private void OnClicked(object sender, EventArgs e) {
 		try {
 			// If clicking on the button if the Enter Content text box is empty, tell the User to enter something first
 			if (entryContent.Text is null) {
@@ -100,12 +98,12 @@ public partial class MainPage : ContentPage {
 				foreach (string cellname in sheet.GetNamesOfAllNonemptyCells()) {
 					//ascii calculation for cellname to rows & col
 					int AlphatoNum = cellname[0] - 65;
-					string numString = cellname.Substring(1, cellname.Length - 1);
+					string numString = cellname[1..];
 					int.TryParse(numString, out int num);
 
 					//Plot the value to its cellname in the spreadsheet
 					spreadsheetGrid.SetValue(AlphatoNum, num - 1, sheet.GetCellValue(cellname).ToString());
-					if (sheet.GetCellValue(cellname) is SpreadsheetUtilities.FormulaError) {
+					if (sheet.GetCellValue(cellname) is FormulaError) {
 						spreadsheetGrid.SetValue(AlphatoNum, num - 1, "FormulaError");
 					}
 				}
@@ -140,7 +138,7 @@ public partial class MainPage : ContentPage {
 	/// </summary>
 	/// <param name="sender">Pointer to the entry</param>
 	/// <param name="e"> trigger an event</param>
-	private void EnterKey(Object sender, EventArgs e) {
+	private void EnterKey(object sender, EventArgs e) {
 		// same function as the button click
 		OnClicked(sender, e);
 	}
@@ -151,7 +149,7 @@ public partial class MainPage : ContentPage {
 	/// </summary>
 	/// <param name="sender">Pointer to the MenuFlyoutItem</param>
 	/// <param name="e"> trigger an event</param>
-	private async void NewClicked(Object sender, EventArgs e) {
+	private async void NewClicked(object sender, EventArgs e) {
 		// Check that if there are any changes in the Spreadsheet.
 		if (sheet.Changed) {
 			//Asks the user if they want to save or not, cancel feature so that it doesn't clear
@@ -210,7 +208,7 @@ public partial class MainPage : ContentPage {
 	/// </summary>
 	/// <param name="sender">Pointer to the MenuFlyoutItem</param>
 	/// <param name="e">trigger an event</param>
-	private void SaveClicked(Object sender, EventArgs e) {
+	private void SaveClicked(object sender, EventArgs e) {
 		//Takes the already save path and update the spreadsheet
 		if (sheet.Changed) {
 			if (!File.Exists(fullpath)) {
@@ -228,7 +226,7 @@ public partial class MainPage : ContentPage {
 	/// </summary>
 	/// <param name="sender">Pointer to the MenuFlyoutItem</param>
 	/// <param name="e">trigger an event</param>
-	private async void SaveAsClicked(Object sender, EventArgs e) {
+	private async void SaveAsClicked(object sender, EventArgs e) {
 		// if Changes are ture start to save, Otherwise do nothing
 		if (sheet.Changed) {
 			SaveAgain:
@@ -271,7 +269,7 @@ public partial class MainPage : ContentPage {
 	/// </summary>
 	/// <param name="sender">Pointer to the MenuFlyoutItem</param>
 	/// <param name="e">trigger an event</param>
-	private async void OpenClicked(Object sender, EventArgs e) {
+	private async void OpenClicked(object sender, EventArgs e) {
 		//Checks if the spreadsheet has been changed
 		if (sheet.Changed) {
 			SaveAgain:
@@ -347,7 +345,7 @@ public partial class MainPage : ContentPage {
 			//Changes the letters to number & grabing the number for Cell
 			//ascii calculation for cellname to rows & col
 			int AlphatoNum = cellname[0] - 65;
-			string numString = cellname.Substring(1, cellname.Length - 1);
+			string numString = cellname[1..];
 			int.TryParse(numString, out int num);
 			//Plot the value to its cellname in the spreadsheet
 			spreadsheetGrid.SetValue(AlphatoNum, num - 1, sheet.GetCellValue(cellname).ToString());
@@ -363,7 +361,7 @@ public partial class MainPage : ContentPage {
 	/// </summary>
 	/// <param name="sender">pointer to MenuFlyoutItem</param>
 	/// <param name="e">trigger an event</param>
-	private async void Screencapture(Object sender, EventArgs e) {
+	private async void Screencapture(object sender, EventArgs e) {
 		// take a screenshot
 		var screenshot = await Spreadsheet.CaptureAsync();
 		var path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
@@ -389,7 +387,7 @@ public partial class MainPage : ContentPage {
 	/// </summary>
 	/// <param name="sender">Pointer to the MenuFlyoutItem</param>
 	/// <param name="e">trigger an event</param>
-	private void ShowCell(Object sender, EventArgs e) {
+	private void ShowCell(object sender, EventArgs e) {
 		// it's visible first, therefore hide it, vise versa
 		if (LabelCell.IsVisible && entryCell.IsVisible) {
 			LabelCell.IsVisible = false;
@@ -406,7 +404,7 @@ public partial class MainPage : ContentPage {
 	/// </summary>
 	/// <param name="sender">pointer to MenuFlyoutItem</param>
 	/// <param name="e">trigger an event</param>
-	private void ShowValue(Object sender, EventArgs e) {
+	private void ShowValue(object sender, EventArgs e) {
 		// it's visible first, therefore hide it, vise versa
 		if (LabelValue.IsVisible && entryValue.IsVisible) {
 			LabelValue.IsVisible = false;
@@ -423,11 +421,11 @@ public partial class MainPage : ContentPage {
 	/// </summary>
 	/// <param name="sender">Pointer to the MenuFlyoutItem</param>
 	/// <param name="e">trigger an event</param>
-	private void AboutClicked(Object sender, EventArgs e) {
+	private void AboutClicked(object sender, EventArgs e) {
 		// Load HTML format for information
 		string HTML = LoadHtml("About.html");
 		// Add a button functions, i.e close popup
-		Button button = new Button {
+		Button button = new() {
 			Text = "Close",
 			VerticalOptions = LayoutOptions.Center,
 			HorizontalOptions = LayoutOptions.Center,
@@ -437,7 +435,7 @@ public partial class MainPage : ContentPage {
 		};
 
 		// Display a Popup displaying "about" the Program
-		Popup about = new Popup() {
+		Popup about = new() {
 			CanBeDismissedByTappingOutsideOfPopup = true,
 			Size = new Size(500, 500),
 			Content = new StackLayout {
@@ -469,11 +467,11 @@ public partial class MainPage : ContentPage {
 	/// </summary>
 	/// <param name="sender"></param>
 	/// <param name="e"></param>
-	private void HTUClicked(Object sender, EventArgs e) {
+	private void HTUClicked(object sender, EventArgs e) {
 		// Load HTML format for information
 		string HTML = LoadHtml("HowToUse.html");
 		// Add a button functions, i.e close popup
-		Button button = new Button {
+		Button button = new() {
 			Text = "Close",
 			VerticalOptions = LayoutOptions.Center,
 			HorizontalOptions = LayoutOptions.Center,
@@ -483,7 +481,7 @@ public partial class MainPage : ContentPage {
 		};
 
 		// Display a Popup displaying "How to Use" the Program
-		Popup HTU = new Popup() {
+		Popup HTU = new() {
 			CanBeDismissedByTappingOutsideOfPopup = true,
 			Size = new Size(520, 700),
 			Content = new StackLayout {
@@ -534,7 +532,7 @@ public partial class MainPage : ContentPage {
 	/// <returns>The letter that is associated to the int</returns>
 	private string NumtoAlpha(int i) {
 		char letter = (char) (i + 65);
-		return Char.ToString(letter);
+		return char.ToString(letter);
 	}
 
 	/// <summary>
@@ -543,6 +541,6 @@ public partial class MainPage : ContentPage {
 	/// <param name="s">The string to make sure that is valid</param>
 	/// <returns>True if it's valid, Otherwise False </returns>
 	private bool Valid(string s) {
-		return Char.IsUpper(s, 0);
+		return char.IsUpper(s, 0);
 	}
 }

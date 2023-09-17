@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 
 namespace SpreadsheetUtilities;
 /// <summary>
@@ -25,8 +21,8 @@ namespace SpreadsheetUtilities;
 /// </summary>
 /// 
 /// Author: Monthon Paul
-/// Version: September 16 2022
-public class Formula {
+/// Version: September 17 2023
+public partial class Formula {
 
 	// Initialize Outside Variables
 	private string formulaExp;
@@ -41,7 +37,7 @@ public class Formula {
 	/// The associated normalizer is the identity function, and the associated validator
 	/// maps every string to true.  
 	/// </summary>
-	public Formula(String formula) :
+	public Formula(string formula) :
 		this(formula, s => s, s => true) {
 	}
 
@@ -83,10 +79,10 @@ public class Formula {
 		}
 		// Is it following proper formatting rules? Go through each statement.
 		// If it doesn't follow the rules, throw an FormulFormatException
-		if (!verifyingTokens(normalize, isValid)) {
+		if (!VerifyingTokens(normalize, isValid)) {
 			throw new FormulaFormatException("Not a formula. Enter in a proper formula.");
 		}
-		if (!formulaValid()) {
+		if (!FormulaValid()) {
 			throw new FormulaFormatException("Invalid Formula format. Enter in a valid formula format.");
 		}
 	}
@@ -100,19 +96,19 @@ public class Formula {
 	/// <param name="normalize">Function that takes a given string to return a string</param>
 	/// <param name="isValid">Function that check is given string is true or false</param>
 	/// <returns></returns>
-	private bool verifyingTokens(Func<string, string> normalize, Func<string, bool> isValid) {
+	private bool VerifyingTokens(Func<string, string> normalize, Func<string, bool> isValid) {
 		// Generate temporary token list
 		List<string> tempTokens = new();
 		// Go through the Original Formula of tokens to check
 		// if it's an Operator, Number Value, or Variable
 		foreach (string ele in tokens) {
 			//Check if it's a Operator
-			if (Regex.IsMatch(ele, @"^[()/*+-]$")) {
+			if (OpRegex().IsMatch(ele)) {
 				tempTokens.Add(ele);
 				// Check if it's a number
 			} else if (double.TryParse(ele, out double d)) {
 				tempTokens.Add(d.ToString());
-			} else if (isVariable(ele)) {
+			} else if (IsVariable(ele)) {
 				// If it's a variable, pass in Normalize
 				// Then check if it's valid to add to the temp.
 				string n = normalize(ele);
@@ -135,8 +131,8 @@ public class Formula {
 	/// </summary>
 	/// <param name="var"> Variable string</param>
 	/// <returns>True if it's a Variable, Otherwise false</returns>
-	private static bool isVariable(string var) {
-		return Regex.IsMatch(var, @"^[a-zA-Z_]+[a-zA-Z_\d]*$");
+	private static bool IsVariable(string var) {
+		return VarRegex1().IsMatch(var);
 	}
 
 	/// <summary>
@@ -158,12 +154,11 @@ public class Formula {
 	/// must be either an operator or a closing parenthesis.
 	/// </summary>
 	/// <returns>Return true if the Formula Format correctly, Otherwise False</returns>
-	private bool formulaValid() {
+	private bool FormulaValid() {
 		// Initialize variables
 		int rightPar = 0;
 		int leftPar = 0;
-		string nextele = "";
-		double d = 0.0;
+		double d;
 
 		// One Token Rule
 		if (tokens.Length is 1) {
@@ -171,24 +166,25 @@ public class Formula {
 			if (double.TryParse(tokens[0], out d)) {
 				formulaExp = d.ToString();
 				return true;
-			} else if (isVariable(tokens[0])) {
+			} else if (IsVariable(tokens[0])) {
 				formulaExp = tokens[0];
 				return true;
 				// It can't be an Operator
-			} else if (Regex.IsMatch(tokens[0], @"^[()/*+-]$")) {
+			} else if (OpRegex().IsMatch(tokens[0])) {
 				return false;
 			}
 		}
 		//Starting Token Rule
-		if (!(isVariable(tokens[0]) || double.TryParse(tokens[0], out d) || tokens[0] is "(")) {
+		if (!(IsVariable(tokens[0]) || double.TryParse(tokens[0], out _) || tokens[0] is "(")) {
 			return false;
 		}
 		// Ending Token Rule
-		if (!(isVariable(tokens[tokens.Length - 1]) || double.TryParse(tokens[tokens.Length - 1], out d) || tokens[tokens.Length - 1] is ")")) {
+		if (!(IsVariable(tokens[^1]) || double.TryParse(tokens[^1], out _) || tokens[^1] is ")")) {
 			return false;
 		}
 		// Go through to check each tokens from Formula to see if it matches the ruleset
 		for (int i = 0; i < tokens.Length; i++) {
+			string nextele;
 			// Keep track of the the ele before index
 			// if it gets till the end (with nothing before index)
 			// Break the loop.
@@ -205,7 +201,7 @@ public class Formula {
 			switch (tokens[i]) {
 				case "(":
 					//Left parenthesis next element should only be either a number, a variable, or an opening parenthesis.
-					if (!(isVariable(nextele) || double.TryParse(nextele, out d) || nextele is "(")) {
+					if (!(IsVariable(nextele) || double.TryParse(nextele, out _) || nextele is "(")) {
 						return false;
 					}
 					// add on
@@ -213,7 +209,7 @@ public class Formula {
 					break;
 				case ")":
 					// Right parenthesis next element should only be either an Operator or an closing parenthesis.
-					if (!Regex.IsMatch(nextele, @"^[)/*+-]$")) {
+					if (!MyRegex1().IsMatch(nextele)) {
 						return false;
 					}
 					// add on
@@ -223,15 +219,15 @@ public class Formula {
 					break;
 			}
 			// Operator Following Rule: must be either a number, a variable, or an opening parenthesis.
-			if (Regex.IsMatch(tokens[i], @"^[/*+-]$")) {
-				if (!(isVariable(nextele) || double.TryParse(nextele, out d) || nextele is "(")) {
+			if (MyRegex2().IsMatch(tokens[i])) {
+				if (!(IsVariable(nextele) || double.TryParse(nextele, out _) || nextele is "(")) {
 					return false;
 				}
 			}
 			// Any token that immediately follows a number, a variable
 			// must be either an operator or a closing parenthesis.
-			if (double.TryParse(tokens[i], out d) || isVariable(tokens[i])) {
-				if (!Regex.IsMatch(nextele, @"^[)/*+-]$")) {
+			if (double.TryParse(tokens[i], out _) || IsVariable(tokens[i])) {
+				if (!MyRegex1().IsMatch(nextele)) {
 					return false;
 				}
 			}
@@ -270,13 +266,13 @@ public class Formula {
 	/// <returns>Return a double number if Evaluated, Otherwise Formula Error for either divide by 0 or undefined variables</returns>
 	public object Evaluate(Func<string, double> lookup) {
 		// Initialize variables
-		double number, firstnum = 0;
+		double number;
 		Stack<double> value = new();
 		Stack<string> operators = new();
 		// An Algorithm to loop for each String to add on the stacks to perform Calculations
 		foreach (string s in tokens) {
 			// Case 1: Check given token matches one or more letters followed by one or more digits
-			if (isVariable(s)) {
+			if (IsVariable(s)) {
 				// Try to lookup the formula. if the formula doesn't exist
 				// throw an exeception, but catch it to return FormulaError
 				try {
@@ -300,7 +296,7 @@ public class Formula {
 				continue;
 			}
 			// Case 3: Check if the token is an operator
-			else if (Regex.IsMatch(s, @"[()/*+-]")) {
+			else if (OpRegex().IsMatch(s)) {
 				// Go to a specific case in order to perform calculation
 				switch (s) {
 					case "(":
@@ -343,7 +339,7 @@ public class Formula {
 		// return a finilize solution when 2 values and 1 operator
 		// Perform  a calculation to return a solution.
 		// In case one of the Valuse will never be 0
-		firstnum = value.Pop();
+		double firstnum = value.Pop();
 		Calculation(firstnum, value.Pop(), operators.Pop(), out double calc);
 		return calc;
 	}
@@ -388,13 +384,12 @@ public class Formula {
 	/// <param name="number">specific token which is an double value</param>
 	/// <returns>return true if gone through the Algo, Otherwise False</returns>
 	private bool IntegerAlgo(Stack<string> operators, Stack<double> value, double number) {
-		// Check if operator has any number
-		double calc = 0;
 		if (operators.Count != 0) {
 			// Perform neccessary floating point number Calculation
 			// Special Case for if Divid by Zero.
 			if (operators.Peek() == "/" || operators.Peek() == "*") {
-				if (Calculation(number, value.Pop(), operators.Pop(), out calc)) {
+				// Check if operator has any number
+				if (Calculation(number, value.Pop(), operators.Pop(), out double calc)) {
 					value.Push(calc);
 					return true;
 				}
@@ -413,8 +408,8 @@ public class Formula {
 	/// <param name="ope"> first Operator</param>
 	/// <param name="secop"> Second Operator</param>
 	/// <returns>return true if gone through the Algo, Otherwise False</returns>
-	private bool OperatorAlgo(Stack<String> operators, Stack<double> value, String ope, String secop) {
-		double firstnum, calc = 0;
+	private bool OperatorAlgo(Stack<string> operators, Stack<double> value, string ope, string secop) {
+		double firstnum;
 		if (operators.Count != 0) {
 			// compare the top of Operators stack with specific opperators.
 			// as ope and secop can be :+-/*
@@ -422,7 +417,7 @@ public class Formula {
 				firstnum = value.Pop();
 				// Check if it can calculate the operation
 				// Special Case for if Divid by Zero.
-				if (Calculation(firstnum, value.Pop(), operators.Pop(), out calc)) {
+				if (Calculation(firstnum, value.Pop(), operators.Pop(), out double calc)) {
 					value.Push(calc);
 					return true;
 				}
@@ -444,7 +439,7 @@ public class Formula {
 	/// new Formula("x+X*z").GetVariables() should enumerate "x", "X", and "z".
 	/// </summary>
 	/// <returns>An Enumerable of given Variables</returns>
-	public IEnumerable<String> GetVariables() {
+	public IEnumerable<string> GetVariables() {
 		return variables;
 	}
 
@@ -486,12 +481,12 @@ public class Formula {
 	/// <returns>return true if Equals, otherwise False</returns>
 	public override bool Equals(object? obj) {
 		// Check if the object is a Formula and not a null value
-		if (!(obj is Formula) || obj is null) {
+		if (obj is not Formula || obj is null) {
 			return false;
 		}
 		// Cast the obj, Then check if it has the right HashCode number & right ToString
 		Formula f = (Formula) obj;
-		if (this.GetHashCode != f.GetHashCode && this.ToString() != f.ToString()) {
+		if (this.GetHashCode != f.GetHashCode && ToString() != f.ToString()) {
 			return false;
 		}
 		return true;
@@ -513,7 +508,7 @@ public class Formula {
 	/// <returns>True if not Equals, Otherwise False</returns>
 	public static bool operator !=(Formula f1, Formula f2) {
 		// Do the opposite or Equals
-		return !(f1.Equals(f2));
+		return !f1.Equals(f2);
 	}
 
 	/// <summary>
@@ -533,27 +528,42 @@ public class Formula {
 	/// match one of those patterns.  There are no empty tokens, and no token contains white space.
 	/// </summary>
 	/// <returns> an Enumerable of Tokens</returns>
-	private static IEnumerable<string> GetTokens(String formula) {
+	private static IEnumerable<string> GetTokens(string formula) {
 		// Patterns for individual tokens
-		String lpPattern = @"\(";
-		String rpPattern = @"\)";
-		String opPattern = @"[\+\-*/]";
-		String varPattern = @"[a-zA-Z_](?: [a-zA-Z_]|\d)*";
-		String doublePattern = @"(?: \d+\.\d* | \d*\.\d+ | \d+ ) (?: [eE][\+-]?\d+)?";
-		String spacePattern = @"\s+";
+		string lpPattern = @"\(";
+		string rpPattern = @"\)";
+		string opPattern = @"[\+\-*/]";
+		string varPattern = @"[a-zA-Z_](?: [a-zA-Z_]|\d)*";
+		string doublePattern = @"(?: \d+\.\d* | \d*\.\d+ | \d+ ) (?: [eE][\+-]?\d+)?";
+		string spacePattern = @"\s+";
 
 		// Overall pattern
-		String pattern = String.Format("({0}) | ({1}) | ({2}) | ({3}) | ({4}) | ({5})",
+		string pattern = string.Format("({0}) | ({1}) | ({2}) | ({3}) | ({4}) | ({5})",
 										lpPattern, rpPattern, opPattern, varPattern, doublePattern, spacePattern);
 
 		// Enumerate matching tokens that don't consist solely of white space.
-		foreach (String s in Regex.Split(formula, pattern, RegexOptions.IgnorePatternWhitespace)) {
-			if (!Regex.IsMatch(s, @"^\s*$", RegexOptions.Singleline)) {
+		foreach (string s in Regex.Split(formula, pattern, RegexOptions.IgnorePatternWhitespace)) {
+			if (!MyRegex().IsMatch(s)) {
 				yield return s;
 			}
 		}
 
 	}
+
+	[GeneratedRegex("^[()/*+-]$")]
+	private static partial Regex OpRegex();
+
+	[GeneratedRegex("^[a-zA-Z_]+[a-zA-Z_\\d]*$")]
+	private static partial Regex VarRegex1();
+
+	[GeneratedRegex("^\\s*$", RegexOptions.Singleline)]
+	private static partial Regex MyRegex();
+
+	[GeneratedRegex("^[)/*+-]$")]
+	private static partial Regex MyRegex1();
+
+	[GeneratedRegex("^[/*+-]$")]
+	private static partial Regex MyRegex2();
 }
 
 /// <summary>
@@ -563,7 +573,7 @@ public class FormulaFormatException : Exception {
 	/// <summary>
 	/// Constructs a FormulaFormatException containing the explanatory message.
 	/// </summary>
-	public FormulaFormatException(String message)
+	public FormulaFormatException(string message)
 		: base(message) {
 	}
 }
@@ -576,7 +586,7 @@ public struct FormulaError {
 	/// Constructs a FormulaError containing the explanatory reason.
 	/// </summary>
 	/// <param name="reason"></param>
-	public FormulaError(String reason)
+	public FormulaError(string reason)
 		: this() {
 		Reason = reason;
 	}

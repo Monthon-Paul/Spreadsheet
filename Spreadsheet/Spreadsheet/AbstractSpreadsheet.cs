@@ -108,9 +108,9 @@ public abstract class AbstractSpreadsheet {
 	/// equal.
 	/// </summary>
 	public AbstractSpreadsheet(Func<string, bool> isValid, Func<string, string> normalize, string version) {
-		this.IsValid = isValid;
-		this.Normalize = normalize;
-		this.Version = version;
+		IsValid = isValid;
+		Normalize = normalize;
+		Version = version;
 	}
 
 	/// <summary>
